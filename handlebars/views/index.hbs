@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{title}}</title>
+  </head>
+
+  <body>
+    <main id="main">
+      <h1>{{title}}</h1>
+
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Country</th>
+          <th>DOB</th>
+          <th>Medals</th>
+        </tr>
+
+        {{#each athletes}}
+          <tr>
+            <td><a href="{{this.link}}">{{this.name}}</a></td>
+            <td>{{toUpperCase this.country}}</td>
+            <td>{{this.birth}}</td>
+            <td>{{this.medals.length}}</td>
+          </tr>
+        {{/each}}
+
+      </table>
+    </main>
+
+    {{>footer}}
+
+    <script>
+      var data = {{{json athletes}}}
+    </script>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

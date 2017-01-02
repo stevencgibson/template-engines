@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <main id="main">
+      <h1><%= title %></h1>
+
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Country</th>
+          <th>DOB</th>
+          <th>Medals</th>
+        </tr>
+
+        <% athletes.forEach((athlete) => { %>
+          <tr>
+            <td><a href=<%= athlete.link %>><%= athlete.name %></a></td>
+            <td><%= athlete.country.toUpperCase() %></td>
+            <td><%= athlete.birth %></td>
+            <td><%= athlete.medals.length %></td>
+          </tr>
+        <% }); %>
+
+      </table>
+    </main>
+
+    <% include includes/footer %>
+
+    <script>
+      var data = <%- JSON.stringify(athletes) %>
+    </script>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

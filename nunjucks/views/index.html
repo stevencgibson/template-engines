@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ title }}</title>
+  </head>
+
+  <body>
+    <main id="main">
+      <h1>{{ title }}</h1>
+
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Country</th>
+          <th>DOB</th>
+          <th>Medals</th>
+        </tr>
+
+        {% for athlete in athletes %}
+          <tr>
+            <td><a href="{{ athlete.link }}">{{ athlete.name }}</a></td>
+            <td>{{ athlete.country.toUpperCase() }}</td>
+            <td>{{ athlete.birth }}</td>
+            <td>{{ athlete.medals.length }}</td>
+          </tr>
+        {% endfor %}
+
+      </table>
+    </main>
+
+    {% include "includes/footer.html" %}
+
+    <script>
+      var data = {{ athletes | dump }}
+    </script>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

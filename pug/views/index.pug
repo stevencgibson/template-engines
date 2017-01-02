@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+  head
+    title= title
+
+  body
+    main#main
+      h1 #{title}
+
+      table
+        tr
+          th Name
+          th Country
+          th DOB
+          th Medals
+
+        each athlete in athletes
+          tr
+            td
+              a(href='' + athlete.link) #{athlete.name}
+            td #{athlete.country.toUpperCase()}
+            td #{athlete.birth}
+            td #{athlete.medals.length}
+
+    include includes/footer.pug
+
+    script.
+      var data = !{JSON.stringify(athletes)}
+
+    script(src='/app.js')
